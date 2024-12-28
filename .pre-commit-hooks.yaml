@@ -1,0 +1,9 @@
+- id: tmrw-fix
+  name: TMRW-FIX
+  description: TMRW-FIX is a tool that helps you fix code that will be changed tomorrow.
+  entry: tmrw-fix
+  language: golang
+  types: [text]
+  pass_filenames: false
+  stages:
+    - pre-push
