@@ -50,15 +50,15 @@ jobs:
           # Clean up unarchived binaries
           rm tmrw-fix-*-*[!.tar.gz]
 
+          # Calculate SHA256 checksums
+          echo "Creating checksums..."
+          sha256sum *.tar.gz > checksums.txt
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/tmrw-fix-linux-amd64.tar.gz
-            dist/tmrw-fix-linux-arm64.tar.gz
-            dist/tmrw-fix-darwin-amd64.tar.gz
-            dist/tmrw-fix-darwin-arm64.tar.gz
-            dist/tmrw-fix-windows-amd64.tar.gz
-            dist/tmrw-fix-windows-arm64.tar.gz
+            dist/*.tar.gz
+            dist/checksums.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
